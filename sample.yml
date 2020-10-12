@@ -16,6 +16,11 @@
       state: started
     when: ansible_os_family=="Debian"
 
+  - name: check the apache service
+    service: 
+      name: apache2
+      state: status 
+
   - name: install webserver on redhat
     yum:
       name: httpd

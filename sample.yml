@@ -20,10 +20,10 @@
     yum:
       name: httpd
       state: present
-    when: ansible_os_family=="Redhat"
+    when: ansible_os_family=="RedHat"
 
   - name: start webserver on redhat
     service:
       name: httpd
       state: started
-    when: ansible_os_family=="Redhat"
+    when: ansible_os_family=="RedHat"

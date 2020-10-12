@@ -11,15 +11,10 @@
     when: ansible_os_family=="Debian"
   
   - name: start the webserver on ubuntu
-    apt:
+    service:
       name: apache2
       state: started
     when: ansible_os_family=="Debian"
-
-  - name: check the apache service
-    service: 
-      name: apache2
-      state: status 
 
   - name: install webserver on redhat
     yum:
@@ -28,7 +23,7 @@
     when: ansible_os_family=="Redhat"
 
   - name: start webserver on redhat
-    yum:
+    service:
       name: httpd
       state: started
     when: ansible_os_family=="Redhat"

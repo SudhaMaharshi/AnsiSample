@@ -1,33 +1,7 @@
 ---
 - hosts: all
-  become: yes 
+  become: yes
   tasks:
-  - name: install webserver on ubuntu
-    apt:
-    
-      name: "{{webpackonubuntu}}"
-      state: present
-    
-    when: ansible_os_family=="Debian"
-  
-  - name: start the webserver on ubuntu
-    service:
-      name: "{{webpackonubuntu}}"
-      state: started
-    when: ansible_os_family=="Debian"
-
-  - name: install webserver on redhat
-    yum:
-      name: "{{webpackonredhat}}"
-      state: present
-    when: ansible_os_family=="RedHat"
-
-  - name: start webserver on redhat
-    service:
-      name: "{{webpackonredhat}}"
-      state: started
-    when: ansible_os_family=="RedHat"
-
   - name: install java on ubutnuserver
     apt:
       name: "{{myjavapackubuntu}}"

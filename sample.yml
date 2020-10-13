@@ -5,25 +5,38 @@
   - name: install webserver on ubuntu
     apt:
     
-      name: apache2
+      name: "{{webpackonubuntu}}"
       state: present
     
     when: ansible_os_family=="Debian"
   
   - name: start the webserver on ubuntu
     service:
-      name: apache2
+      name: "{{webpackonubuntu}}"
       state: started
     when: ansible_os_family=="Debian"
 
   - name: install webserver on redhat
     yum:
-      name: httpd
+      name: "{{webpackonredhat}}"
       state: present
     when: ansible_os_family=="RedHat"
 
   - name: start webserver on redhat
     service:
-      name: httpd
+      name: "{{webpackonredhat}}"
       state: started
     when: ansible_os_family=="RedHat"
+
+  - name: install java on ubutnuserver
+    apt:
+      name: "{{myjavapackubuntu}}"
+      state: present
+    when: ansible_os_family=="Debian"
+
+  - name: install java on the redhat
+    yum:
+      name: "{{myjavapackredhat}}"
+      state: present
+    when: ansible_os_family=="RedHat"
+    
